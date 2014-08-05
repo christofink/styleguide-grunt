@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     // Generate html pages from structure generated
     grunt.registerTask('temp', ['assemble:styleguidePages']);
 
-    grunt.registerTask('sg', [ 'copy:styleguide', 'sass:www', 'sass:styleguide',  'assemble:styleguidePages']);
+    grunt.registerTask('sg', [ 'copy:styleguide', 'sass:www', 'sass:styleguide',  'assemble:styleguidePages', 'assemble:build']);
 
     grunt.registerTask('build', ['clean:styleguide', 'sg' ]);
 
