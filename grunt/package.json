@@ -1,0 +1,37 @@
+{
+  "name": "Boilerplate",
+  "version": "0.0.0",
+  "title": "TMB",
+  "author": "Chris Jerochim",
+  "copyright": "2013",
+  "license": "MIT",
+  "repository": "https://github.com/cjerochim/styelguide-grunt.git",
+  "devDependencies": {
+    "assemble": "~0.4.0",
+    "connect-livereload": "~0.2.0",
+    "grunt": "~0.4.1",
+    "grunt-banner": "^0.2.3",
+    "grunt-browser-sync": "^1.3.2",
+    "grunt-bump": "0.0.15",
+    "grunt-complexity": "~0.1.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "~0.7.0",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-watch": "~0.5.0",
+    "grunt-cssc": "~0.2.6",
+    "grunt-dox": "~0.5.0",
+    "grunt-newer": "~0.6.1",
+    "grunt-open": "~0.2.0",
+    "grunt-plato": "~0.2.0",
+    "grunt-prompt": "^1.1.0",
+    "grunt-shell": "^0.7.0",
+    "grunt-spritesmith": "^2.1.1",
+    "load-grunt-configs": "~0.3.1",
+    "load-grunt-tasks": "~0.3.0"
+  },
+  "dependencies": {
+    "semver": "^3.0.1"
+  }
+}

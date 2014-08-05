@@ -1,0 +1,34 @@
+
+<a href="#sg-nav-container" class="sg-nav-toggle">Menu</a>
+<div class="sg-nav-container" id="sg-nav-container">
+    <ol class="sg-nav">
+        <li><a href="">All</a></li>
+        {{#each categories}}
+            <li class="sg-nav-{{category}}">
+                <a href="#" class="sg-acc-handle">{{category}}</a>
+                <ol class="sg-acc-panel">
+                    {{#foreachSubNav pages}}
+
+                        {{#if $isSubNew}}
+                            {{#if $first}}
+                                <a href="#" class="sg-acc-handle">{{data.sub}}</a>
+                                <ol class="sg-acc-panel">
+                            {{else}}
+                                </ol>
+                                <a href="#" class="sg-acc-handle">{{data.sub}}</a>
+                                <ol class="sg-acc-panel">
+                            {{/if}}
+                        {{/if}}
+                            <li><a href="#{{basename}}">{{data.title}}</a></li>
+                        {{#if $last}}
+                            </ol>
+                        {{/if}}
+
+                    {{/foreachSubNav}}
+                </ol>
+            </li>
+        {{/each}}
+    </ol>
+</div>
+
+

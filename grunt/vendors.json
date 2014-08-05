@@ -1,0 +1,7 @@
+{
+    "js": {
+        "files": [
+            "../bower/bower_components/fastclick/lib/fastclick.js"
+        ]
+    }
+}

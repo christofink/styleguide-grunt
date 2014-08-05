@@ -1,0 +1,7 @@
+.DS_Store
+.idea/
+grunt/.sass-cache
+grunt/node_modules/
+bower/bower_components/
+dist/
+www/

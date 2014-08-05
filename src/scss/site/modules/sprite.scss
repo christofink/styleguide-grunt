@@ -1,0 +1,87 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+*/
+$sprite-email-x: 15px;
+$sprite-email-y: 0px;
+$sprite-email-offset-x: -15px;
+$sprite-email-offset-y: 0px;
+$sprite-email-width: 27px;
+$sprite-email-height: 20px;
+$sprite-email-total-width: 110px;
+$sprite-email-total-height: 32px;
+$sprite-email-image: '../imgs/sprite.png';
+$sprite-email: 15px 0px -15px 0px 27px 20px 110px 32px '../imgs/sprite.png';
+$sprite-facebook-dark-x: 44px;
+$sprite-facebook-dark-y: 0px;
+$sprite-facebook-dark-offset-x: -44px;
+$sprite-facebook-dark-offset-y: 0px;
+$sprite-facebook-dark-width: 32px;
+$sprite-facebook-dark-height: 32px;
+$sprite-facebook-dark-total-width: 110px;
+$sprite-facebook-dark-total-height: 32px;
+$sprite-facebook-dark-image: '../imgs/sprite.png';
+$sprite-facebook-dark: 44px 0px -44px 0px 32px 32px 110px 32px '../imgs/sprite.png';
+$sprite-facebook-x: 0px;
+$sprite-facebook-y: 0px;
+$sprite-facebook-offset-x: 0px;
+$sprite-facebook-offset-y: 0px;
+$sprite-facebook-width: 13px;
+$sprite-facebook-height: 26px;
+$sprite-facebook-total-width: 110px;
+$sprite-facebook-total-height: 32px;
+$sprite-facebook-image: '../imgs/sprite.png';
+$sprite-facebook: 0px 0px 0px 0px 13px 26px 110px 32px '../imgs/sprite.png';
+$sprite-gplus-dark-x: 78px;
+$sprite-gplus-dark-y: 0px;
+$sprite-gplus-dark-offset-x: -78px;
+$sprite-gplus-dark-offset-y: 0px;
+$sprite-gplus-dark-width: 32px;
+$sprite-gplus-dark-height: 32px;
+$sprite-gplus-dark-total-width: 110px;
+$sprite-gplus-dark-total-height: 32px;
+$sprite-gplus-dark-image: '../imgs/sprite.png';
+$sprite-gplus-dark: 78px 0px -78px 0px 32px 32px 110px 32px '../imgs/sprite.png';
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
