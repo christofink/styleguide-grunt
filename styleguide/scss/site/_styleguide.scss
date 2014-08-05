@@ -462,7 +462,6 @@ html, body {
   //margin: 0 auto;
   height: 100%;
   width: 100%;
-  float:left;
 
   &.hay-mode {
     -webkit-transition: all 40s linear;
@@ -567,14 +566,6 @@ html, body {
   overflow: hidden;
 }
 
-/*
-  Pattern element - with minimal margin padding
-*/
-.sg-pattern-element {
-  margin-top: 2em;
-  padding: 0 $sg-pad;
-}
-
 
 .sg-annotation-container {
   margin-bottom: $sg-doublespace;
@@ -606,23 +597,15 @@ html, body {
   color: $sg-primary;
   padding: $sg-pad;
   margin: $sg-space 0;
-
-
-
 }
 
-
-
-/*
-.sg-code, code {
+.sg-code {
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
-  font-family: Consolas, Monaco, 'Andale Mono', monospace!important;
   word-wrap: break-word;
   white-space: pre-wrap;
 }
-*/
 
 // Demo to show grid system - in this stylesheet because it shouldn't be included in the production styles
 .demo {

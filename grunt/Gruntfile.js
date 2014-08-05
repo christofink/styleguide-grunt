@@ -40,9 +40,17 @@ module.exports = function(grunt) {
 
     grunt.registerTask('report', ['plato']);      //Displaty reports on js
 
-    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'sass:dist', 'usebanner:dist', 'sprite:dist', 'prompt:bump']);
+    grunt.registerTask('dist', ['clean:dist', 'copy:dist', 'sass:dist', 'usebanner:dist', 'sprite:dist']);
 
-    grunt.registerTask('sg', [ 'copy:styleguide', 'sass:www', 'sass:styleguide', 'assemble:styleguideIndex', 'assemble:styleguidePages', 'assemble:build']);
+    grunt.registerTask('release', ['prompt:bump']);
+
+    // Generate navigation structure for styleguide
+    grunt.registerTask('struct', ['assemble:styleguidePageJson']);
+
+    // Generate html pages from structure generated
+    grunt.registerTask('temp', ['assemble:styleguidePages']);
+
+    grunt.registerTask('sg', [ 'copy:styleguide', 'sass:www', 'sass:styleguide',  'assemble:styleguidePages']);
 
     grunt.registerTask('build', ['clean:styleguide', 'sg' ]);
 

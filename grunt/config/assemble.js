@@ -5,65 +5,61 @@
  * http://assemble.io/docs/
  */
 
-module.exports = {
-    options: {
-        flatten: true,
-        marked: {
-            sanitize: false
-        }
-    },
+module.exports = function(grunt, options) {
 
-    /**
-     * Generate Template pages
-     **/
-    build: {
+    var jsonFile =  grunt.file.readJSON('../src/data/sg/sg-pages.json');
+
+    return {
         options: {
-            data: '<%= paths.src %>/data/**/*.json',
-            assets: '<%= paths.src %>',
-            layoutdir: '<%= paths.src %>/templates/layouts',
-            partials: ['<%= paths.src %>/templates/partials/*.hbs']
+            flatten: true,
+            marked: {
+                sanitize: false
+            }
         },
-        files: {
-            '<%= paths.www %>/': ['<%= paths.src %>/templates/pages/**/*.hbs']
+
+        /**
+         * Generate Template pages
+         * Todo - verify if this is needed.
+         **/
+        build: {
+            options: {
+                data: '<%= paths.src %>/data/**/*.json',
+                assets: '<%= paths.src %>',
+                layoutdir: '<%= paths.src %>/templates/layouts',
+                partials: ['<%= paths.src %>/templates/partials/*.hbs']
+            },
+            files: {
+                '<%= paths.www %>/': ['<%= paths.src %>/templates/pages/**/*.hbs']
+            }
+        },
+
+        //Step 1
+        // Generate page structure format in JSON that will be ran through StyleguidePages to create the partial pages
+        styleguidePageJson: {
+            options: {
+                data: '<%= paths.src %>/data/styleguidenav/*.json',
+                helpers: [ '<%= paths.styleguide %>/helpers/**/*.js'],
+                server: false,
+                ext: '.json'
+            },
+            files: {
+                '<%= paths.src %>/data/sg': ['<%= paths.styleguide %>/templates/pages/sg-pages.hbs']
+            }
         }
-    },
-
-
-    /**
-     *  Styleguide
-     */
-
-
-    /**
-     * Generate navigation / index page
-     * note - This will generate off all other partials from the style guide and src
-     * Todo - disable each individual partial being generated
-     **/
-    styleguideIndex: {
-        options: {
-            data: '<%= paths.src %>/data/**/*.json',
-            helpers: [ '<%= paths.styleguide %>/helpers/**/*.js'],
-            layoutdir: '<%= paths.styleguide %>/templates/layouts',
-            partials: ['<%= paths.styleguide %>/templates/partials/**/*.hbs','<%= paths.src %>/templates/partials/**/*.hbs']    // Reference partials from assets
-        },
-        files: {
-            '<%= paths.www %>/': ['<%= paths.styleguide %>/templates/pages/**/*.hbs', '<%= paths.src %>/templates/partials/**/*.hbs']
-        }
-    },
-
-
-    /**
-     * Generate all partials to pages for styleguide
-     **/
-    styleguidePages: {
-        options: {
-            data: '<%=  paths.src %>/data/**/*.json',
-            helpers: ['<%= paths.styleguide %>/helpers/**/*.js'],
-            layout: '<%= paths.styleguide %>/templates/layouts/styleguide-preview-page.hbs',
-            partials: ['<%= paths.styleguide %>/templates/partials/**/*.hbs','<%= paths.src %>/templates/partials/**/*.hbs']      // Reference partials from assets
-        },
-        files: {
-            '<%= paths.www %>/': ['<%=  paths.src %>/templates/partials/**/*.hbs']
+        ,
+        //Step 2
+        // Generate actual pages from the json structure generate from above
+        styleguidePages: {
+            options: {
+                data: '<%= paths.src %>/data/**/*.json',
+                helpers: [ '<%= paths.styleguide %>/helpers/**/*.js'],
+                layoutdir: '<%= paths.styleguide %>/templates/layouts',
+                partials: ['<%= paths.src %>/templates/partials/**/*.hbs', '<%= paths.styleguide %>/templates/partials/**/*.hbs'],
+                pages:jsonFile
+            },
+            files: {
+                '<%= paths.www %>/': ['<%= paths.src %>/templates/pages/index.hbs']
+            }
         }
     }
 };

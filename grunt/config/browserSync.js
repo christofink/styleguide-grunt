@@ -10,7 +10,7 @@ module.exports = {
         ]
     },
     options: {
-        watchTask: true,
+        watchTask: false,
         server: {
             baseDir: '<%= paths.www %>'
         }

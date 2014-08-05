@@ -196,20 +196,16 @@
 		
 		//Code View Trigger
 		$('#sg-t-code').on("click", function(e){
-			var $code = $vp.find('.snippet-container');
+			var $code = $vp.find('.sg-code');
 			e.preventDefault();
 			$(this).toggleClass('active');
-		    $code.toggle();
+			
+			if($vp.find('.sg-code').length==0) {
+				buildCodeView();
+			} else {
+				$code.toggle();
+			}
 		});
-
-
-
-
-
-
-
-
-
 
 
 
@@ -231,24 +227,15 @@
 		
 		//Add code blocks after each pattern
 		function buildCodeView() {
-            $sgPattern.each(function(index) {
+			$sgPattern.each(function(index) {
 				$this = $(this),
 				$thisHTML = $this.html().replace(/[<>]/g, function(m) { return {'<':'&lt;','>':'&gt;'}[m]}), 
 				$thisCode = $( '<code></code>' ).html($thisHTML);
 				
 				$('<pre class="sg-code" />').html($thisCode).appendTo($this); //Create new node, fill it with the code text, then append it to the pattern
 			});
-
-
-
-
-            $vp.find('.sg-code').show();
+			$vp.find('.sg-code').show();
 		}
-
-
-
-
-
 
 
 

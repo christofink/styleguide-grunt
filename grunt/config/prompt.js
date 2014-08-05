@@ -61,10 +61,12 @@ module.exports = function(grunt, options) {
 
                 ],
                 then: function() {
+
                     //If custom version defined set external option
                     if(grunt.config.get('bump.increment') === 'custom') {
                         grunt.option('setversion', grunt.config.get('bump.version'));
                         grunt.task.run('bump');
+
                     } else {
                         grunt.task.run('bump:' + grunt.config.get('bump.increment'));
                     }
