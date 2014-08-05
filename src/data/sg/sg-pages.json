@@ -75,6 +75,20 @@
                 
             
             
+                ,
+            
+        
+            
+                "pl034-test" : {
+                     "data" : {
+                        "title" : "pl034-test",
+                        "layout" : "styleguide-preview.hbs"
+                    },
+                    "content" : "{{section 'pl034-test'}}"
+                }
+                
+            
+            
         
         
     
