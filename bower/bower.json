@@ -13,6 +13,7 @@
     "tests"
   ],
   "devDependencies": {
-    "foundation": "zurb/bower-foundation#~5.3.3"
+    "foundation": "zurb/bower-foundation#~5.3.3",
+    "bower-bourbon": "~3.1.8"
   }
 }
